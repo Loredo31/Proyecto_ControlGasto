@@ -270,7 +270,11 @@ li:hover .tooltip {
 }
 
 .floating-window {
+<<<<<<< Updated upstream
     background-color: rgba(3, 0, 46, 0.432); 
+=======
+    background-color: rgba(0, 3, 34, 0.568); 
+>>>>>>> Stashed changes
     padding: 10px;
     border-radius: 8px;
     width: 230px; 
