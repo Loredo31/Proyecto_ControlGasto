@@ -23,6 +23,7 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
 import { ResumenComponent } from './components/resumen/resumen.component';
 import { AhorroComponent } from './components/ahorro/ahorro.component';
 import { BilleteraComponent } from './components/billetera/billetera.component';
+import { SoporteTecnicoComponent } from './components/soporte-tecnico/soporte-tecnico.component';
 
 registerLocaleData(localeEs, 'es');
 
@@ -44,7 +45,8 @@ registerLocaleData(localeEs, 'es');
     UsuarioComponent,
     ResumenComponent,
     AhorroComponent,
-    BilleteraComponent
+    BilleteraComponent,
+    SoporteTecnicoComponent
   ],
   imports: [
     BrowserModule,

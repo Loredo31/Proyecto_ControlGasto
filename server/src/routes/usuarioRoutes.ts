@@ -13,7 +13,7 @@ class UsuarioRoutes {
         this.router.post('/',usuarioController.create);
         this.router.delete('/:idUser',usuarioController.delete);
         this.router.put('/:idUser',usuarioController.update);
-        this.router.get('/:idUser', usuarioController.getOne);
+        this.router.get('/:Usuario', usuarioController.checkUsername);
     }
 }
 

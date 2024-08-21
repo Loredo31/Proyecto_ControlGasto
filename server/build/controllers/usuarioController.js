@@ -47,15 +47,15 @@ class UsuarioController {
             res.json({ message: 'The user was updated' });
         });
     }
-    getOne(req, res) {
+    checkUsername(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { idUser } = req.params;
-            const usuario = yield database_1.default.query('SELECT * FROM Usuario WHERE IdUsuario = ?', [idUser]);
+            const { Usuario } = req.params;
+            const usuario = yield database_1.default.query('SELECT * FROM Usuario WHERE Usuario = ?', [Usuario]);
             if (usuario.length > 0) {
-                res.json(usuario[0]);
+                res.json({ exists: true });
             }
             else {
-                res.status(404).json({ text: 'The user doesn\'t exist' });
+                res.json({ exists: false });
             }
         });
     }
