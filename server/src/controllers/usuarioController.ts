@@ -29,15 +29,16 @@ class UsuarioController {
         res.json({ message: 'The user was updated' });
     }
 
-    public async getOne(req: Request, res: Response): Promise<void> {
-        const { idUser } = req.params;
-        const usuario = await pool.query('SELECT * FROM Usuario WHERE IdUsuario = ?', [idUser]);
+    public async checkUsername(req: Request, res: Response): Promise<void> {
+        const { Usuario } = req.params;
+        const usuario = await pool.query('SELECT * FROM Usuario WHERE Usuario = ?', [Usuario]);
         if (usuario.length > 0) {
-            res.json(usuario[0]);
+            res.json({ exists: true });
         } else {
-            res.status(404).json({ text: 'The user doesn\'t exist' });
+            res.json({ exists: false });
         }
     }
+    
 }
 
 

@@ -26,4 +26,9 @@ export class UsuarioService {
     return this.http.get<any>(`${this.API_URI}/${id}`);
   }
   
+  checkUsername(Usuario: string): Observable<boolean> {
+    return this.http.get<{ exists: boolean }>(`${this.API_URI}/${Usuario}`).pipe(
+      map(response => response.exists)
+    );
+}
 }
