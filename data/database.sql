@@ -10,9 +10,9 @@ CREATE TABLE Usuario (
     ApPaterno VARCHAR(50) NOT NULL,
     ApMaterno VARCHAR(50),
     NumTelefono CHAR(10),
-    Correo VARCHAR(50) NOT NULL,
-    FechaNacimiento DATETIME,
-    Usuario CHAR(20) NOT NULL,
+    Correo VARCHAR(50) NOT NULL UNIQUE,
+    FechaNacimiento VARCHAR(20) NOT NULL,
+    Usuario CHAR(20) NOT NULL UNIQUE,
     Contrasena VARCHAR(30) NOT NULL
 );
 

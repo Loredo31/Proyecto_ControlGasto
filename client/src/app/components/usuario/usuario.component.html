@@ -7,50 +7,40 @@
     <div class="container">
         <header class="header">
             <div class="title">
-                <h1>Usuario</h1>
+                <h1>Perfil de Usuario</h1>
             </div>
             <nav>
                 <ul>
                     <li class="left"><a routerLink="/inicio-usuario">Control de Gastos</a></li>
                     <li class="right"><a routerLink="/inicio-usuario">Regresar</a></li>
                     <li class="right"><a routerLink="/home">Cerrar sesión</a></li>
-                </ul>                
+                </ul>
             </nav>
         </header>
         <main class="main-content">
             <section class="seccion-perfil-usuario">
                 <div class="perfil-usuario-header">
-                    <button type="button" class="boton-editar-datos">
-                        <i class="far fa-edit"></i> Editar datos
-                    </button>
                     <div class="perfil-usuario-portada">
                         <div class="perfil-usuario-avatar">
-                            <img src="http://localhost/multimedia/relleno/img-c9.png" alt="img-avatar">
-                            <button type="button" class="boton-avatar">
-                                <i class="far fa-image"></i>
-                            </button>
+                            <!-- Enlaza la imagen del usuario -->
+                            <img [src]="usuario?.avatarUrl || 'https://image.freepik.com/icones-gratis/usuario-icone-do-perfil_318-33925.jpg'" alt="img-avatar">
                         </div>
-                        <button type="button" class="boton-portada">
-                            <i class="far fa-image"></i> Cambiar fondo
-                        </button>
                     </div>
                 </div>
                 <div class="perfil-usuario-body">
                     <div class="perfil-usuario-bio">
-                        <h3 class="titulo">Maria Perez Lopez</h3>
-                        <p class="texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <!-- Enlaza el nombre y la biografía del usuario -->
+                        <h3 class="titulo">{{ usuario.Nombre + ' ' + usuario.ApPaterno + ' ' + usuario.ApMaterno|| 'Nombre del Usuario' }}</h3>
+                        
                     </div>
                     <div class="perfil-usuario-footer">
                         <ul class="lista-datos">
-                            <li><i class="icono fas fa-map-signs"></i> Direccion de usuario:</li>
-                            <li><i class="icono fas fa-phone-alt"></i> Telefono:</li>
-                            <li><i class="icono fas fa-briefcase"></i> Trabaja en.</li>
-                            <li><i class="icono fas fa-building"></i> Cargo</li>
+                            <li><i class="icono fas fa-map-signs"></i> Direccion de usuario: {{ usuario.Correo || 'No disponible' }}</li>
+                            <li><i class="icono fas fa-phone-alt"></i> Telefono: {{ usuario.NumTelefono || 'No disponible' }}</li>
                         </ul>
                         <ul class="lista-datos">
-                            <li><i class="icono fas fa-map-marker-alt"></i> Ubicacion.</li>
-                            <li><i class="icono fas fa-calendar-alt"></i> Fecha nacimiento.</li>
-                            <li><i class="icono fas fa-user-check"></i> Registro.</li>
+                            <li><i class="icono fas fa-calendar-alt"></i> Fecha nacimiento: {{ usuario.FechaNacimiento || 'No disponible' }}</li>
+                            <li><i class="icono fas fa-user"></i>Usuario: {{ usuario.Usuario || 'No disponible' }}</li>
                         </ul>
                     </div>
                 </div>

@@ -1,3 +1,4 @@
+// login.component.ts
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioService } from '../../../services/usuario.service';
@@ -14,6 +15,7 @@ export class LoginComponent {
 
   constructor(private usuarioService: UsuarioService, private router: Router,
     private notificationService: NotificationService,) {}
+
 
     ngOnInit() {
       this.notificationService.notification$.subscribe(message => {
