@@ -17,6 +17,7 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
 import { ResumenComponent } from './components/resumen/resumen.component';
 import { AhorroComponent } from './components/ahorro/ahorro.component';
 import { BilleteraComponent } from './components/billetera/billetera.component';
+import { SoporteTecnicoComponent } from './components/soporte-tecnico/soporte-tecnico.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent }, 
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: "resumen", component: ResumenComponent},
   { path: "ahorro", component: AhorroComponent},
   { path: "billetera", component: BilleteraComponent},
+  { path: "soporte-tecnico", component: SoporteTecnicoComponent},
   { path: '**', redirectTo: '/' }
 ];
 
