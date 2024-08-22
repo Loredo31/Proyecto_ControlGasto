@@ -8,7 +8,7 @@ import { Gasto } from '../models/Gasto';
   providedIn: 'root'
 })
 export class GastosService {
-  private API_URI = 'http://localhost:3000/api/gasto';
+  private API_URI = 'http://68.183.105.26:3000/api/gasto';
 
   constructor(private http: HttpClient) { }
 
