@@ -1,9 +1,9 @@
 export default {
     database : {
         host : 'db-mysql-cg-do-user-17557286-0.f.db.ondigitalocean.com',
-        user : 'doadmin',
-        password : 'AVNS_VnhR4QAmpToyMV2lCja',
-        database : 'defaultdb',
+        user : 'admin',
+        password : 'AVNS_7u8VSjUOLSbSiiEcsqr',
+        database : 'ControlGasto',
         port : 25060
     }
 }
