@@ -21,4 +21,14 @@ export class UsuarioService {
   createUser(usuario: Usuario): Observable<any> {
     return this.http.post(`${this.API_URI}/`, usuario);
   }
+
+  getUsuarioPorId(id: string): Observable<any> {
+    return this.http.get<any>(`${this.API_URI}/${id}`);
+  }
+  
+  checkUsername(Usuario: string): Observable<boolean> {
+    return this.http.get<{ exists: boolean }>(`${this.API_URI}/${Usuario}`).pipe(
+      map(response => response.exists)
+    );
+}
 }

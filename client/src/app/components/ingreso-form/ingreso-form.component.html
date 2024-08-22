@@ -24,23 +24,16 @@
                         <div class="form-floating">
                             <select id="tipoIngreso" name="tipoIngreso" [(ngModel)]="ingreso.TipoIngreso" required>
                                 <option value="" disabled selected>Selecciona tipo de ingreso</option>
-                                <option value="Salarios">Salarios</option>
-                                <option value="Pensiones">Pensiones</option>
-                                <option value="Intereses">Intereses</option>
-                                <option value="Dividendos">Dividendos</option>
-                                <option value="Alquileres">Alquileres</option>
-                                <option value="Comisiones">Comisiones</option>
-                                <option value="Subsidios">Subsidios</option>
-                                <option value="Ventas">Ventas</option>
-                                <option value="Beneficios">Beneficios</option>
-                                <option value="Regalías">Regalías</option>
-                                <option value="Subvenciones">Subvenciones</option>
-                                <option value="Donaciones">Donaciones</option>
-                                <option value="Cuotas">Cuotas</option>
-                                <option value="Matrículas">Matrículas</option>
-                                <option value="Investigación">Investigación</option>
-                                <option value="Publicidad">Publicidad</option>
-                                <option value="Patrocinios">Patrocinios</option>
+                                <option value="Venta de Servicios">Venta de Servicios</option>
+                                <option value="Venta en Tienda Física">Venta en Tienda Física</option>
+                                <option value="Venta Corporativa">Venta Corporativa</option>
+                                <option value="Promociones y Ofertas">Promociones y Ofertas</option>
+                                <option value="Eventos Especiales">Eventos Especiales</option>
+                                <option value="Inversiones">Inversiones</option>
+                                <option value="Intereses y Rendimientos">Intereses y Rendimientos</option>
+                                <option value="Patrocinios y Colaboraciones">Patrocinios y Colaboraciones</option>
+                                <option value="Comisiones por Referencias">Comisiones por Referencias</option>
+                                <option value="Cursos y Talleres">Cursos y Talleres</option>
                             </select>
                             <label for="tipoIngreso">Tipo de ingreso</label>
                             <span class="info-icon">
@@ -69,11 +62,16 @@
                         <div class="form-floating">
                             <select id="categoria" name="categoria" [(ngModel)]="ingreso.Categoria" required>
                                 <option value="" disabled selected>Selecciona categoría</option>
-                                <option value="Laboral">Laboral</option>
-                                <option value="Pasivo">Pasivo</option>
-                                <option value="No Laboral">No Laboral</option>
-                                <option value="Comercial">Comercial</option>
-                                <option value="Institucional">Institucional</option>
+                                <option value="Diseño y Personalización">Diseño y Personalización</option>
+                                <option value="Servicios de Consultoría">Servicios de Consultoría</option>
+                                <option value="Ingresos por Inversiones">Ingresos por Inversiones</option>
+                                <option value="Ingresos por Intereses">Ingresos por Intereses</option>
+                                <option value="Dividendos">Dividendos</option>
+                                <option value="Patrocinios">Patrocinios</option>
+                                <option value="Comisiones por Referencias">Comisiones por Referencias</option>
+                                <option value="Cursos y Talleres">Cursos y Talleres</option>
+                                <option value="Derechos de Autor o Licencias">Derechos de Autor o Licencias</option>
+                                <option value="Subvenciones y Ayudas">Subvenciones y Ayudas</option>
                             </select>
                             <label for="categoria">Categoría</label>
                             <span class="info-icon">

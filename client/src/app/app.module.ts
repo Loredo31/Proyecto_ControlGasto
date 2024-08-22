@@ -9,8 +9,6 @@ import localeEs from '@angular/common/locales/es';
 
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegistrarseComponent } from './components/auth/registrarse/registrarse.component';
-import { RecuperarContrasenaComponent } from './components/auth/recuperar-contrasena/recuperar-contrasena.component';
-import { RecuperarContrasena2Component } from './components/auth/recuperar-contrasena2/recuperar-contrasena2.component';
 import { HomeComponent } from './components/home/home.component';
 import { InicioUsuarioComponent } from './components/inicio-usuario/inicio-usuario.component';
 import { GastoFormComponent } from './components/gasto-form/gasto-form.component';
@@ -21,8 +19,7 @@ import { ServicioFormComponent } from './components/servicio-form/servicio-form.
 import { ServicioListComponent } from './components/servicio-list/servicio-list.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { ResumenComponent } from './components/resumen/resumen.component';
-import { AhorroComponent } from './components/ahorro/ahorro.component';
-import { BilleteraComponent } from './components/billetera/billetera.component';
+import { SoporteTecnicoComponent } from './components/soporte-tecnico/soporte-tecnico.component';
 
 registerLocaleData(localeEs, 'es');
 
@@ -32,8 +29,6 @@ registerLocaleData(localeEs, 'es');
     HomeComponent,
     LoginComponent,
     RegistrarseComponent,
-    RecuperarContrasenaComponent,
-    RecuperarContrasena2Component,
     InicioUsuarioComponent,
     GastoFormComponent,
     GastoListComponent,
@@ -43,8 +38,7 @@ registerLocaleData(localeEs, 'es');
     ServicioListComponent,
     UsuarioComponent,
     ResumenComponent,
-    AhorroComponent,
-    BilleteraComponent
+    SoporteTecnicoComponent
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,7 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { Usuario } from '../../../models/Usuario';
 import { UsuarioService } from '../../../services/usuario.service';
 import { Router } from '@angular/router';
-import { NotificationService } from '../../../services/notification.service';  // Importa NotificationService
+import { NotificationService } from '../../../services/notification.service';
 
 @Component({
   selector: 'app-registrarse-form',
@@ -103,16 +103,29 @@ export class RegistrarseComponent implements OnInit {
 
   saveNewUsuario() {
     if (this.validateForm()) {
-      this.usuarioService.createUser(this.usuario).subscribe(
-        res => {
-          this.notificationService.showNotification('Cuenta creada exitosamente');  // Muestra notificación
-          this.router.navigate(['/home']);
-        },
-        err => {
-          console.log(err);
-          this.notificationService.showNotification('Hubo un error al crear la cuenta');  // Muestra notificación de error
-        }
-      );
+        this.usuarioService.checkUsername(this.usuario.Usuario).subscribe(
+            exists => {
+                if (exists) {
+                    this.errorMessages['Usuario'] = 'El nombre de usuario ya existe, por favor elige otro.';
+                } else {
+                    this.usuarioService.createUser(this.usuario).subscribe(
+                        res => {
+                            this.notificationService.showNotification('Cuenta creada exitosamente');
+                            this.router.navigate(['/home']);
+                        },
+                        err => {
+                            console.log(err);
+                            this.notificationService.showNotification('Hubo un error al crear la cuenta');
+                        }
+                    );
+                }
+            },
+            err => {
+                console.log(err);
+                this.notificationService.showNotification('Error al verificar el nombre de usuario');
+            }
+        );
+    
     }
   }
 }
