@@ -21,14 +21,7 @@
       <div class="white-container">
         <div class="filters-container">
           <div class="filter-dropdown">
-            <button class="button_filter">Filtrar Gastos</button>
-            <div class="dropdown-content">
-              <a (click)="filterGastos('day')">Último Día</a>
-              <a (click)="filterGastos('week')">Última Semana</a>
-              <a (click)="filterGastos('month')">Último Mes</a>
-              <a (click)="filterGastos('year')">Último Año</a>
-              <a (click)="filterGastos('all')">Todos</a>
-            </div>
+            <input type="date" (change)="onDateSelected($event)" />
           </div>
           <div class="type-filter-dropdown">
             <button class="button_filter">Filtrar por Tipo</button>
@@ -45,7 +38,7 @@
               <a (click)="createPdf()">Descargar como PDF</a>
             </div>
           </div>
-        </div>
+        </div>        
         <table class="expenses-table">
           <thead>
             <tr>

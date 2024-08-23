@@ -23,14 +23,14 @@ export class RegistrarseComponent implements OnInit {
     Contrasena: ''
   };
 
-  confirmarContrasena: string = ''; // Nueva propiedad para confirmar la contraseña
+  confirmarContrasena: string = ''; 
 
   errorMessages: { [key: string]: string } = {};
 
   constructor(
     private usuarioService: UsuarioService,
     private router: Router,
-    private notificationService: NotificationService  // Inyecta NotificationService
+    private notificationService: NotificationService  
   ) {}
 
   ngOnInit() {}
@@ -39,13 +39,13 @@ export class RegistrarseComponent implements OnInit {
     this.errorMessages = {}; // Reset error messages
 
     if (!this.usuario.Nombre || !this.isValidName(this.usuario.Nombre)) {
-      this.errorMessages['Nombre'] = 'Ingrese un nombre válido (solo letras, inicia con mayúscula)*';
+      this.errorMessages['Nombre'] = 'Ingrese un nombre válido (solo letras, inicia con mayúscula, no dejar espacios en blanco)*';
     }
     if (!this.usuario.ApPaterno || !this.isValidName(this.usuario.ApPaterno)) {
-      this.errorMessages['ApPaterno'] = 'Ingrese un apellido paterno válido (solo letras, inicia con mayúscula)*';
+      this.errorMessages['ApPaterno'] = 'Ingrese un apellido paterno válido (solo letras, inicia con mayúscula, no dejar espacios en blanco)*';
     }
     if (!this.usuario.ApMaterno || !this.isValidName(this.usuario.ApMaterno)) {
-      this.errorMessages['ApMaterno'] = 'Ingrese un apellido materno válido (solo letras, inicia con mayúscula)*';
+      this.errorMessages['ApMaterno'] = 'Ingrese un apellido materno válido (solo letras, inicia con mayúscula, no dejar espacios en blanco)*';
     }
     if (!this.usuario.NumTelefono || !this.isValidPhoneNumber(this.usuario.NumTelefono)) {
       this.errorMessages['NumTelefono'] = 'Ingrese un número de teléfono válido (10 dígitos)*';

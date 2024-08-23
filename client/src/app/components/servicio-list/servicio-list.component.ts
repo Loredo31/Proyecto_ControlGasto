@@ -32,7 +32,6 @@ export class ServicioListComponent implements OnInit {
       this.router.navigate(['/login']);
     }
 
-    
     this.notificationService.notification$.subscribe(message => {
       this.notificationMessage = message;
     });
@@ -48,14 +47,14 @@ export class ServicioListComponent implements OnInit {
       );
     }
   }
-  
 
   deleteServicio(id: number) {
-    if (this.idUsuario && confirm('¿Estás seguro de que deseas eliminar este servicio?')) {
+    if (this.idUsuario) {
       this.serviciosService.deleteServicio(id.toString(), this.idUsuario).subscribe(
         () => {
           this.servicios = this.servicios.filter((servicio: any) => servicio.IdServicio !== id);
-          this.loadPresupuestos(); //Nuevo
+          this.loadPresupuestos();
+          this.notificationService.showNotification('Servicio eliminado correctamente');
         },
         err => console.log(err)
       );
@@ -75,5 +74,5 @@ export class ServicioListComponent implements OnInit {
         err => console.log(err)
       );
     }
-}
+  }
 }

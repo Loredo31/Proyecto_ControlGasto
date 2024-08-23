@@ -44,7 +44,6 @@ export class GastoListComponent implements OnInit {
     });
   }
 
-  
   loadGastos() {
     if (this.idUsuario) {
       this.gastosService.getGastos(this.idUsuario).subscribe(
@@ -55,18 +54,19 @@ export class GastoListComponent implements OnInit {
       );
     }
   }
-  
+
   deleteGasto(id: number) {
-    if (this.idUsuario && confirm('¿Estás seguro de que deseas eliminar este gasto?')) {
+    if (this.idUsuario) {
       this.gastosService.deleteGasto(id.toString(), this.idUsuario).subscribe(
         () => {
           this.gastos = this.gastos.filter((gasto: any) => gasto.IdGasto !== id);
           this.loadPresupuestos();
+          this.notificationService.showNotification('Gasto eliminado correctamente');
         },
         err => console.log(err)
       );
     }
-  }
+  }  
 
   editGasto(id: number) {
     this.router.navigate(['/gastos/edit', id]);
@@ -81,5 +81,5 @@ export class GastoListComponent implements OnInit {
         err => console.log(err)
       );
     }
-}
+  }
 }

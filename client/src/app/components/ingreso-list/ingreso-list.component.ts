@@ -47,14 +47,14 @@ export class IngresoListComponent implements OnInit {
       );
     }
   }
-  
 
   deleteIngreso(id: number) {
-    if (this.idUsuario && confirm('¿Estás seguro de que deseas eliminar este ingreso?')) {
+    if (this.idUsuario) {
       this.ingresosService.deleteIngreso(id.toString(), this.idUsuario).subscribe(
         () => {
           this.ingresos = this.ingresos.filter((ingreso: any) => ingreso.IdIngreso !== id);
           this.loadPresupuestos();
+          this.notificationService.showNotification('Ingreso eliminado correctamente');
         },
         err => console.log(err)
       );
@@ -74,5 +74,5 @@ export class IngresoListComponent implements OnInit {
         err => console.log(err)
       );
     }
-}
+  }
 }

@@ -196,4 +196,19 @@ export class ResumenComponent implements OnInit {
       this.resumen = this.resumenOriginal.filter(item => item.type === type);
     }
   }
+
+  onDateSelected(event: any) {
+    const selectedDate = new Date(event.target.value);
+    selectedDate.setHours(0, 0, 0, 0); 
+  
+    this.resumen = this.resumenOriginal.filter(item => {
+      const itemDate = new Date(item.FechaTransaccion || item.FechaIngreso || item.FechaServicio);
+      itemDate.setHours(0, 0, 0, 0); 
+  
+      return (
+        itemDate.getTime() === selectedDate.getTime() 
+      );
+    });
+  }
+  
 }
