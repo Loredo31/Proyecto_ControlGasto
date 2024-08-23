@@ -35,7 +35,7 @@ export class GastoFormComponent implements OnInit {
   ngOnInit() {
     this.idUsuario = localStorage.getItem('IdUsuario'); 
     this.gastoId = this.route.snapshot.paramMap.get('id');
-    this.gasto.FechaTransaccion = new Date().toISOString().split('T')[0];
+
     if (this.gastoId) {
       this.isEditMode = true;
       this.gastosService.getGasto(this.gastoId, this.idUsuario).subscribe(

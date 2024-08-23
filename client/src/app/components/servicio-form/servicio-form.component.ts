@@ -35,7 +35,6 @@ export class ServicioFormComponent implements OnInit {
   ngOnInit() {
     this.idUsuario = localStorage.getItem('IdUsuario'); 
     this.servicioId = this.route.snapshot.paramMap.get('id');
-    this.servicio.FechaServicio = new Date().toISOString().split('T')[0];
     if (this.servicioId) {
       this.isEditMode = true;
       this.serviciosService.getServicio(this.servicioId, this.idUsuario).subscribe(

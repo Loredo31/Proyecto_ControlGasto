@@ -34,7 +34,6 @@ export class IngresoFormComponent implements OnInit {
   ngOnInit() {
     this.idUsuario = localStorage.getItem('IdUsuario'); 
     this.ingresoId = this.route.snapshot.paramMap.get('id');
-    this.ingreso.FechaIngreso = new Date().toISOString().split('T')[0];
     if (this.ingresoId) {
       this.isEditMode = true;
       this.ingresosService.getIngreso(this.ingresoId, this.idUsuario).subscribe(
