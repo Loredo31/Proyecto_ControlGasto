@@ -18,9 +18,9 @@ class ServicioController {
 
     console.log('IdUsuario:', idUser);
     console.log('Servicio:', servicio);
-  
+
     servicio.IdUsuario = idUser;
-  
+
     try {
       await pool.query('INSERT INTO Servicio SET ?', [servicio]);
       res.json({ message: 'Servicio guardado' });
@@ -28,7 +28,6 @@ class ServicioController {
       res.status(500).json({ error: 'Error al crear el Servicio' });
     }
   }
-  
 
   public async delete(req: Request, res: Response): Promise<void> {
     const { id, idUser } = req.params;
@@ -43,11 +42,11 @@ class ServicioController {
   public async update(req: Request, res: Response): Promise<void> {
     const { id, idUser } = req.params;
     const servicio = req.body;
-  
+
     console.log('IdServicio:', id);
     console.log('IdUsuario:', idUser);
     console.log('Servicio:', servicio);
-  
+
     try {
       const result = await pool.query('UPDATE Servicio SET ? WHERE IdServicio = ? AND IdUsuario = ?', [servicio, id, idUser]);
       if (result.affectedRows > 0) {
@@ -65,6 +64,8 @@ class ServicioController {
     try {
       const servicio = await pool.query('SELECT * FROM Servicio WHERE IdServicio = ? AND IdUsuario = ?', [id, idUser]);
       if (servicio.length > 0) {
+        // Convertir FechaServicio a YYYY-MM-DD
+        servicio[0].FechaServicio = servicio[0].FechaServicio.toISOString().split('T')[0];
         res.json(servicio[0]);
       } else {
         res.status(404).json({ text: 'El servicio no existe' });

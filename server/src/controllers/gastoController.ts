@@ -65,6 +65,8 @@ class GastoController {
     try {
       const gasto = await pool.query('SELECT * FROM Gasto WHERE IdGasto = ? AND IdUsuario = ?', [id, idUser]);
       if (gasto.length > 0) {
+        // Convertir FechaTransaccion a YYYY-MM-DD
+        gasto[0].FechaTransaccion = gasto[0].FechaTransaccion.toISOString().split('T')[0];
         res.json(gasto[0]);
       } else {
         res.status(404).json({ text: 'El gasto no existe' });

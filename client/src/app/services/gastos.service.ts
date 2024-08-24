@@ -19,7 +19,15 @@ export class GastosService {
   }  
 
   getGasto(id: string, idUser: string): Observable<Gasto> {
-    return this.http.get<Gasto>(`${this.API_URI}/${idUser}/${id}`);
+    return this.http.get<Gasto>(`${this.API_URI}/${idUser}/${id}`).pipe(
+      map((gasto: Gasto) => {
+        if (gasto.FechaTransaccion) {
+          // Transformar FechaTransaccion a YYYY-MM-DD
+          gasto.FechaTransaccion = gasto.FechaTransaccion.split('T')[0];
+        }
+        return gasto;
+      })
+    );
   }
 
   saveGastos(idUser: string, gasto: Gasto): Observable<any> {
@@ -33,5 +41,4 @@ export class GastosService {
   updateGasto(id: string, idUser: string, gasto: Gasto): Observable<any> {
     return this.http.put<any>(`${this.API_URI}/${idUser}/${id}`, gasto);
   }
-  
 }

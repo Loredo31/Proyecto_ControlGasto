@@ -19,7 +19,15 @@ export class IngresosService {
   }  
 
   getIngreso(id: string, idUser: string): Observable<Ingreso> {
-    return this.http.get<Ingreso>(`${this.API_URI}/${idUser}/${id}`);
+    return this.http.get<Ingreso>(`${this.API_URI}/${idUser}/${id}`).pipe(
+      map((ingreso: Ingreso) => {
+        if (ingreso.FechaIngreso) {
+          // Transformar FechaIngreso a YYYY-MM-DD
+          ingreso.FechaIngreso = ingreso.FechaIngreso.split('T')[0];
+        }
+        return ingreso;
+      })
+    );
   }
 
   saveIngresos(idUser: string, ingreso: Ingreso): Observable<any> {
@@ -33,5 +41,4 @@ export class IngresosService {
   updateIngreso(id: string, idUser: string, ingreso: Ingreso): Observable<any> {
     return this.http.put<any>(`${this.API_URI}/${idUser}/${id}`, ingreso);
   }
-  
 }

@@ -17,15 +17,22 @@ export class ServiciosService {
       map(response => response.servicios)
     );
   }
-    
 
   getServicio(id: string, idUser: string): Observable<Servicio> {
-    return this.http.get<Servicio>(`${this.API_URI}/${idUser}/${id}`);
+    return this.http.get<Servicio>(`${this.API_URI}/${idUser}/${id}`).pipe(
+      map((servicio: Servicio) => {
+        if (servicio.FechaServicio) {
+          // Transformar FechaServicio a YYYY-MM-DD
+          servicio.FechaServicio = servicio.FechaServicio.split('T')[0];
+        }
+        return servicio;
+      })
+    );
   }
 
   saveServicios(idUser: string, servicio: Servicio): Observable<any> {
     return this.http.post<any>(`${this.API_URI}/${idUser}`, servicio);
-  } 
+  }
 
   deleteServicio(id: string, idUser: string): Observable<any> {
     return this.http.delete<any>(`${this.API_URI}/${idUser}/${id}`);
@@ -34,5 +41,4 @@ export class ServiciosService {
   updateServicio(id: string, idUser: string, servicio: Servicio): Observable<any> {
     return this.http.put<any>(`${this.API_URI}/${idUser}/${id}`, servicio);
   }
-  
 }

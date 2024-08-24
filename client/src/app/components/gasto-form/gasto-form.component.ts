@@ -40,6 +40,10 @@ export class GastoFormComponent implements OnInit {
       this.isEditMode = true;
       this.gastosService.getGasto(this.gastoId, this.idUsuario).subscribe(
         (gasto: Gasto) => {
+          if (gasto.FechaTransaccion) {
+            // Transformar el campo FechaTransaccion a YYYY-MM-DD
+            gasto.FechaTransaccion = gasto.FechaTransaccion.split('T')[0];
+          }
           this.gasto = gasto;
         },
         err => console.log(err)

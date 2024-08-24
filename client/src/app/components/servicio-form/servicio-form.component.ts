@@ -39,6 +39,10 @@ export class ServicioFormComponent implements OnInit {
       this.isEditMode = true;
       this.serviciosService.getServicio(this.servicioId, this.idUsuario).subscribe(
         (servicio: Servicio) => {
+          if (servicio.FechaServicio) {
+            // Transformar FechaServicio a YYYY-MM-DD
+            servicio.FechaServicio = servicio.FechaServicio.split('T')[0];
+          }
           this.servicio = servicio;
         },
         err => console.log(err)

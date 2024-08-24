@@ -38,6 +38,10 @@ export class IngresoFormComponent implements OnInit {
       this.isEditMode = true;
       this.ingresosService.getIngreso(this.ingresoId, this.idUsuario).subscribe(
         (ingreso: Ingreso) => {
+          if (ingreso.FechaIngreso) {
+            // Transformar FechaIngreso a YYYY-MM-DD
+            ingreso.FechaIngreso = ingreso.FechaIngreso.split('T')[0];
+          }
           this.ingreso = ingreso;
         },
         err => console.log(err)
