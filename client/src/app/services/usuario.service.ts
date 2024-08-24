@@ -8,7 +8,8 @@ import { Usuario } from '../models/Usuario';
   providedIn: 'root'
 })
 export class UsuarioService {
-  private API_URI = 'http://68.183.105.26:3000/api/usuario'; // backend
+  //private API_URI = 'http://68.183.105.26:3000/api/usuario'; // backend
+  private API_URI = 'http://localhost:3000/api/usuario';
 
   constructor(private http: HttpClient) { }
 
@@ -21,14 +22,16 @@ export class UsuarioService {
   createUser(usuario: Usuario): Observable<any> {
     return this.http.post(`${this.API_URI}/`, usuario);
   }
-
-  getUsuarioPorId(id: string): Observable<any> {
-    return this.http.get<any>(`${this.API_URI}/${id}`);
-  }
   
   checkUsername(Usuario: string): Observable<boolean> {
     return this.http.get<{ exists: boolean }>(`${this.API_URI}/${Usuario}`).pipe(
-      map(response => response.exists)
+        map(response => response.exists)
     );
 }
+
+getUsuarioPorId(id: string): Observable<Usuario> {
+  return this.http.get<Usuario>(`${this.API_URI}/${id}`);
+}
+
+
 }

@@ -47,15 +47,26 @@ class UsuarioController {
             res.json({ message: 'The user was updated' });
         });
     }
-    checkUsername(req, res) {
+    getUserOrCheckUsername(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { Usuario } = req.params;
-            const usuario = yield database_1.default.query('SELECT * FROM Usuario WHERE Usuario = ?', [Usuario]);
-            if (usuario.length > 0) {
-                res.json({ exists: true });
+            const { identifier } = req.params;
+            if (isNaN(Number(identifier))) {
+                const usuario = yield database_1.default.query('SELECT * FROM Usuario WHERE Usuario = ?', [identifier]);
+                if (usuario.length > 0) {
+                    res.json({ exists: true });
+                }
+                else {
+                    res.json({ exists: false });
+                }
             }
             else {
-                res.json({ exists: false });
+                const usuario = yield database_1.default.query('SELECT * FROM Usuario WHERE IdUsuario = ?', [identifier]);
+                if (usuario.length > 0) {
+                    res.json(usuario[0]);
+                }
+                else {
+                    res.status(404).json({ message: 'User not found' });
+                }
             }
         });
     }

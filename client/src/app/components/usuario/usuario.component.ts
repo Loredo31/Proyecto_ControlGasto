@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
+import { Usuario } from '../../models/Usuario';
 
 @Component({
   selector: 'app-usuario',
   templateUrl: './usuario.component.html',
-  styleUrl: './usuario.component.css'
+  styleUrls: ['./usuario.component.css']
 })
 export class UsuarioComponent implements OnInit {
-
-  usuario: any = null;
+  usuario: Usuario | null = null;
   errorMessage: string | null = null;
 
-  constructor(private UsuarioService: UsuarioService) {}
+  constructor(private usuarioService: UsuarioService) {}
 
   ngOnInit() {
     const idUsuario = localStorage.getItem('IdUsuario');
-
+  
     if (idUsuario) {
-      this.UsuarioService.getUsuarioPorId(idUsuario).subscribe(
-        (usuario) => {
+      this.usuarioService.getUsuarioPorId(idUsuario).subscribe(
+        (usuario: Usuario) => {
           this.usuario = usuario;
         },
         (error) => {
