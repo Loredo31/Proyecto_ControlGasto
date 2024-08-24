@@ -33,11 +33,8 @@
             </div>
           </div>
           <div class="dropdown">
-            <button class="button_descargar">Descargar</button>
-            <div class="dropdown-content">
-              <a (click)="createPdf()">Descargar como PDF</a>
-            </div>
-          </div>
+            <button class="button_descargar" (click)="createPdf()">Descargar PDF</button>
+          </div>          
         </div>        
         <table class="expenses-table">
           <thead>

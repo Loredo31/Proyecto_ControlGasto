@@ -76,7 +76,7 @@ export class ResumenComponent implements OnInit {
         };
       },
       content: [
-        { text: 'Resumen Gastos', style: 'header' },
+        { text: 'Resumen Movimientos', style: 'header' },
         {
           style: 'tableExample',
           table: {

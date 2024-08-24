@@ -291,3 +291,12 @@ li:hover .tooltip {
     margin-right: 0; 
 }
 
+.text-red {
+    color: rgb(255, 7, 7);
+}
+
+.text-green {
+    color: rgb(57, 235, 57);
+}
+
+

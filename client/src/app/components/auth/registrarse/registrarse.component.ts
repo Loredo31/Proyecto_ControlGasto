@@ -27,6 +27,9 @@ export class RegistrarseComponent implements OnInit {
 
   errorMessages: { [key: string]: string } = {};
 
+  showPassword: boolean = false;
+  showConfirmPassword: boolean = false;
+
   constructor(
     private usuarioService: UsuarioService,
     private router: Router,
@@ -35,8 +38,16 @@ export class RegistrarseComponent implements OnInit {
 
   ngOnInit() {}
 
+  togglePasswordVisibility(field: string): void {
+    if (field === 'contrasena') {
+      this.showPassword = !this.showPassword;
+    } else if (field === 'confirmarContrasena') {
+      this.showConfirmPassword = !this.showConfirmPassword;
+    }
+  }
+
   validateForm(): boolean {
-    this.errorMessages = {}; // Reset error messages
+    this.errorMessages = {}; 
 
     if (!this.usuario.Nombre || !this.isValidName(this.usuario.Nombre)) {
       this.errorMessages['Nombre'] = 'Ingrese un nombre válido (solo letras, inicia con mayúscula, no dejar espacios en blanco)*';
@@ -60,7 +71,7 @@ export class RegistrarseComponent implements OnInit {
       this.errorMessages['Usuario'] = 'Ingrese un nombre de usuario*';
     }
     if (!this.usuario.Contrasena || !this.isValidPassword(this.usuario.Contrasena)) {
-      this.errorMessages['Contrasena'] = 'La contraseña debe tener al menos 8 caracteres, incluyendo un número o carácter especial*';
+      this.errorMessages['Contrasena'] = 'La contraseña debe tener al menos 8 caracteres, contener al menos una letra minúscula, una letra mayúscula, un número y un carácter especial.*';
     }
     if (this.usuario.Contrasena !== this.confirmarContrasena) {
       this.errorMessages['ConfirmarContrasena'] = 'Las contraseñas no coinciden*';
@@ -98,9 +109,10 @@ export class RegistrarseComponent implements OnInit {
   }
 
   isValidPassword(password: string): boolean {
-    return password.length >= 8;
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return regex.test(password);
   }
-
+  
   saveNewUsuario() {
     if (this.validateForm()) {
         this.usuarioService.checkUsername(this.usuario.Usuario).subscribe(

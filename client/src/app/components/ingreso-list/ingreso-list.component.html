@@ -20,7 +20,12 @@
                 </div>
                 <div class="floating-window">
                     <li class="left" *ngFor="let presupuesto of presupuestos">
-                        <a>Presupuesto actual: ${{ presupuesto.PresupuestoActual }}</a>
+                        <a>
+                            Presupuesto actual: 
+                            <span [ngClass]="{'text-red': presupuesto.PresupuestoActual < 0, 'text-green': presupuesto.PresupuestoActual >= 0}">
+                                ${{ presupuesto.PresupuestoActual }}
+                            </span>
+                        </a>
                     </li>
                 </div>
                 <h1>Lista de Ingresos</h1>

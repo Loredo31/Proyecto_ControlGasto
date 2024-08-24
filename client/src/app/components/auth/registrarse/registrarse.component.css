@@ -109,8 +109,8 @@ body {
 }
 
 .form-floating input {
-    width: 250px;
-    padding: 10px;
+    width: 100%;
+    padding: 10px 40px 10px 10px; /* Ajustar el padding para dar espacio al ícono dentro del input */
     border: 3px solid #eeeaea;
     border-radius: 4px;
     box-sizing: border-box;
@@ -143,6 +143,24 @@ body {
     left: 10px;
     font-size: 13px;
     color: #000000;
+}
+
+.eye-icon-container {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.eye-icon-container i {
+    color: #666;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.eye-icon-container i:hover {
+    color: #000;
+    transform: scale(1.1);
 }
 
 button {

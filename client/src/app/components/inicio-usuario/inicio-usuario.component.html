@@ -43,15 +43,25 @@
             <div class="info-container">
                 <div class="floating-window">
                     <li class="left" *ngFor="let presupuesto of presupuestos">
-                        <a>Presupuesto total: ${{ presupuesto.PresupuestoTotal }}</a>
+                        <a>
+                            Presupuesto total: 
+                            <span [ngClass]="{'text-red': presupuesto.PresupuestoTotal < 0, 'text-green': presupuesto.PresupuestoTotal >= 0}">
+                                ${{ presupuesto.PresupuestoTotal }}
+                            </span>
+                        </a>
                     </li>
                 </div>
                 <div class="floating-window">
                     <li class="left" *ngFor="let presupuesto of presupuestos">
-                        <a>Presupuesto actual: ${{ presupuesto.PresupuestoActual }}</a>
+                        <a>
+                            Presupuesto actual: 
+                            <span [ngClass]="{'text-red': presupuesto.PresupuestoActual < 0, 'text-green': presupuesto.PresupuestoActual >= 0}">
+                                ${{ presupuesto.PresupuestoActual }}
+                            </span>
+                        </a>
                     </li>
                 </div>
-            </div>                        
+            </div>                                                        
         </header>       
         <main class="main-content">
             <section class="gastos">

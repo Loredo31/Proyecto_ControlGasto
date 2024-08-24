@@ -85,22 +85,29 @@
                     </div>
                     <div class="form-group">
                         <div class="form-floating">
-                            <input type="password" id="contrasena" name="contrasena" placeholder=" " required [(ngModel)]="usuario.Contrasena">
+                            <input type="password" id="contrasena" name="contrasena" placeholder=" " required [(ngModel)]="usuario.Contrasena" [type]="showPassword ? 'text' : 'password'">
                             <label for="contrasena">Crear Contraseña</label>
+                            <div class="eye-icon-container">
+                                <i class="fas fa-eye" (click)="togglePasswordVisibility('contrasena')"></i>
+                            </div>
                         </div>
                         <div class="error-message" *ngIf="errorMessages['Contrasena']">
                             <i class="fas fa-exclamation-circle"></i> {{ errorMessages['Contrasena'] }}
                         </div>
                     </div>
+                    
                     <div class="form-group">
                         <div class="form-floating">
-                            <input type="password" id="confirmarContrasena" name="confirmarContrasena" placeholder=" " required [(ngModel)]="confirmarContrasena">
+                            <input type="password" id="confirmarContrasena" name="confirmarContrasena" placeholder=" " required [(ngModel)]="confirmarContrasena" [type]="showConfirmPassword ? 'text' : 'password'">
                             <label for="confirmarContrasena">Confirma Contraseña</label>
+                            <div class="eye-icon-container">
+                                <i class="fas fa-eye" (click)="togglePasswordVisibility('confirmarContrasena')"></i>
+                            </div>
                         </div>
                         <div class="error-message" *ngIf="errorMessages['ConfirmarContrasena']">
                             <i class="fas fa-exclamation-circle"></i> {{ errorMessages['ConfirmarContrasena'] }}
                         </div>
-                    </div>
+                    </div>                                     
                     <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i></button>
                 </form>
             </div>

@@ -35,8 +35,9 @@
           <div class="form-floating">
             <input type="password" class="form-control" id="exampleInputPassword1" placeholder=" " name="password" ngModel required>
             <label for="exampleInputPassword1">Contraseña</label>
+            <i class="fas fa-eye toggle-password" (click)="togglePasswordVisibility()"></i>
           </div>
-        </div>
+        </div>        
         <button type="submit" class="custom-btn custom-btn-primary">Entrar</button>
         <div class="error-message" *ngIf="errorMessage">
           <i class="fas fa-exclamation-circle"></i> {{ errorMessage }}

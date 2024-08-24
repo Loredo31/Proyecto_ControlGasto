@@ -206,3 +206,11 @@ body {
     z-index: 1000;
     animation: slideInRight 0.5s forwards;
 }
+
+.text-red {
+    color: rgb(255, 7, 7);
+}
+
+.text-green {
+    color: rgb(57, 235, 57);
+}
