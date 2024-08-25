@@ -8,7 +8,7 @@ import { Presupuesto } from '../models/Presupuesto';
   providedIn: 'root'
 })
 export class PresupuestosService {
-  private API_URI = 'http://localhost:3000/api/presupuesto';
+  private API_URI = 'http://68.183.105.26:3000/api/presupuesto';
 
   constructor(private http: HttpClient) { }
 

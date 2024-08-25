@@ -63,7 +63,7 @@ class IngresoController {
             console.log('IdUsuario:', idUser);
             console.log('Ingreso:', ingreso);
             try {
-                const result = yield database_1.default.query(`UPDATE Ingreso SET TipoIngreso = ?, OrigenIngreso = ?, Categoria = ?, Monto = ?, FechaIngreso = ? WHERE IdIngreso = ? AND IdUsuario = ?`, [ingreso.TipoIngreso, ingreso.OrigenIngreso, ingreso.Categoria, ingreso.Monto, ingreso.FechaIngreso, id, idUser]);
+                const result = yield database_1.default.query('UPDATE Ingreso SET ? WHERE IdIngreso = ? AND IdUsuario = ?', [ingreso, id, idUser]);
                 if (result.affectedRows > 0) {
                     res.json({ message: 'El ingreso fue actualizado' });
                 }
@@ -72,7 +72,6 @@ class IngresoController {
                 }
             }
             catch (err) {
-                console.error(err);
                 res.status(500).json({ error: 'Error al actualizar el ingreso' });
             }
         });
@@ -83,6 +82,8 @@ class IngresoController {
             try {
                 const ingreso = yield database_1.default.query('SELECT * FROM Ingreso WHERE IdIngreso = ? AND IdUsuario = ?', [id, idUser]);
                 if (ingreso.length > 0) {
+                    // Convertir FechaIngreso a YYYY-MM-DD
+                    ingreso[0].FechaIngreso = ingreso[0].FechaIngreso.toISOString().split('T')[0];
                     res.json(ingreso[0]);
                 }
                 else {

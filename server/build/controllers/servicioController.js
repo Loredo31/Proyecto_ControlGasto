@@ -82,6 +82,8 @@ class ServicioController {
             try {
                 const servicio = yield database_1.default.query('SELECT * FROM Servicio WHERE IdServicio = ? AND IdUsuario = ?', [id, idUser]);
                 if (servicio.length > 0) {
+                    // Convertir FechaServicio a YYYY-MM-DD
+                    servicio[0].FechaServicio = servicio[0].FechaServicio.toISOString().split('T')[0];
                     res.json(servicio[0]);
                 }
                 else {
