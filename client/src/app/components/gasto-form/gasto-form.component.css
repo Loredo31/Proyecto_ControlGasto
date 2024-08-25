@@ -95,7 +95,7 @@ body {
     border-radius: 5px; 
     box-shadow: 13px 13px 23px rgba(0, 0, 0, 0.5);
     border: 2px solid #000b3b6c;
-    background: rgba(125, 111, 248, 0.205);
+    background: rgba(0, 0, 0, 0);
     backdrop-filter: blur(10px);
     display: grid; 
     grid-template-columns: repeat(3, 1fr); 
